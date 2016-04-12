@@ -477,6 +477,19 @@
                         </login-module>
                     </authentication>
                 </security-domain>
+	                <security-domain name="HTTPdigest">
+                    <authentication>
+                        <login-module code="UsersRoles" flag="required">
+                            <module-option name="unauthenticatedIdentity" value="anonymous"/>
+                            <module-option name="hashAlgorithm" value="MD5"/>
+                            <module-option name="hashEncoding" value="rfc2617"/>
+                            <module-option name="hashUserPassword" value="false"/>
+                            <module-option name="hashStorePassword" value="true"/>
+                            <module-option name="passwordIsA1Hash" value="true"/>
+                            <module-option name="storeDigestCallback" value="org.jboss.security.auth.callback.RFC2617Digest"/>
+                        </login-module>
+                    </authentication>
+                </security-domain>
             </security-domains>
         </subsystem>
         <subsystem xmlns="urn:jboss:domain:threads:1.1"/>
